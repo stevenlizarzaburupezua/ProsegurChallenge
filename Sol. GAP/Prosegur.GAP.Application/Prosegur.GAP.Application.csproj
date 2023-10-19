@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Prosegur.GAP.Domain\Prosegur.GAP.Domain.csproj" />
+    <ProjectReference Include="..\Prosegur.GAP.DTO\Prosegur.GAP.DTO.csproj" />
+    <ProjectReference Include="..\Prosegur.GAP.Infrastructure.CrossCutting\Prosegur.GAP.Infrastructure.CrossCutting.csproj" />
+    <ProjectReference Include="..\Prosegur.GAP.Repository\Prosegur.GAP.Repository.csproj" />
+  </ItemGroup>
+
+</Project>

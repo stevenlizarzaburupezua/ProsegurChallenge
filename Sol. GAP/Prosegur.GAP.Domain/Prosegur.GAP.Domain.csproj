@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+ 
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="ExtensionEntities\" />
+    <Folder Include="VO\Login\" />
+    <Folder Include="VO\Rol\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Prosegur.GAP.Domain.Seedwork\Prosegur.GAP.Domain.Seedwork.csproj" />
+  </ItemGroup>
+
+</Project>
