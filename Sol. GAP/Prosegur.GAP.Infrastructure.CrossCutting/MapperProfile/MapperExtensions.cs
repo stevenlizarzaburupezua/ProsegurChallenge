@@ -34,7 +34,6 @@ namespace Prosegur.GAP.Infrastructure.CrossCutting.MapperProfile
                 dst.DIRECCION = src.Direccion;
                 dst.TELEFONO = src.Telefono;
                 dst.FLAG_ACTIVO = true;
-                dst.FLAG_ADMINISTRADOR = false;
                 dst.IMG_USUARIO = null;
                 dst.FEC_REGISTRO = DateTime.Now;
             });
@@ -51,7 +50,6 @@ namespace Prosegur.GAP.Infrastructure.CrossCutting.MapperProfile
                 dst.DIRECCION = src.Direccion;
                 dst.TELEFONO = src.Telefono;
                 dst.FLAG_ACTIVO = true;
-                dst.FLAG_ADMINISTRADOR = false;
                 dst.IMG_USUARIO = null;
                 dst.FEC_REGISTRO = DateTime.Now;
             });
@@ -81,7 +79,6 @@ namespace Prosegur.GAP.Infrastructure.CrossCutting.MapperProfile
                 dst.Direccion = src.DIRECCION;
                 dst.Telefono = src.TELEFONO;
                 dst.FlagActivo = src.FLAG_ACTIVO;
-                dst.FlagAdministrador = src.FLAG_ADMINISTRADOR;
                 dst.Imagen = src.IMG_USUARIO;
                 dst.FechaRegistro = src.FEC_REGISTRO;
             });
