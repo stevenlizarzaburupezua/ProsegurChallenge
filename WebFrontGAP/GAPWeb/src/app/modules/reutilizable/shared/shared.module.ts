@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
@@ -33,7 +33,7 @@ import {MomentDateModule} from '@angular/material-moment-adapter';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClient,
+    HttpClientModule,
     MatCardModule,
     MatInputModule,
     MatSelectModule,

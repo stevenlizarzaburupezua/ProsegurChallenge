@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './components/login/login.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { RegistroSistemaComponent } from './components/registro-sistema/registro-sistema.component';
-import { SharedModule } from './reutilizable/shared/shared.module';
+import { SharedModule } from './modules/reutilizable/shared/shared.module';
 
 @NgModule({
   declarations: [

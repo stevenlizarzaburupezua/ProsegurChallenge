@@ -7,7 +7,7 @@ import { ProductoComponent } from './pages/producto/producto.component';
 import { PedidoComponent } from './pages/pedido/pedido.component';
 import { HistorialPedidoComponent } from './pages/historial-pedido/historial-pedido.component';
 import { ReporteComponent } from './pages/reporte/reporte.component';
-import { SharedModule } from 'src/app/reutilizable/shared/shared.module';
+import { SharedModule } from '../../modules/reutilizable/shared/shared.module'
 
 @NgModule({
   declarations: [
