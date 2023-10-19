@@ -12,7 +12,6 @@ namespace Prosegur.GAP.Domain.Entities
     public class Usuario : Entity
     {
         [Key]
-
         public int ID_USUARIO { get; set; }
 
         [ForeignKey("Rol")]
@@ -37,8 +36,6 @@ namespace Prosegur.GAP.Domain.Entities
         public string TELEFONO { get; set; }
 
         public bool FLAG_ACTIVO { get; set; }
-
-        public bool FLAG_ADMINISTRADOR { get; set; }
 
         public byte[]? IMG_USUARIO { get; set; }
 
