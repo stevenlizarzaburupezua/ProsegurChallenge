@@ -62,26 +62,21 @@ namespace Prosegur.GAP.DTO
         public bool FlagActivo { get; set; }
 
         [Display(Order = 11)]
-        [JsonProperty("flgAdministrador")]
-        [SwaggerSchema("Flag que indica si el usuario tiene privilegios de administrador.")]
-        public bool FlagAdministrador { get; set; }
-
-        [Display(Order = 12)]
         [JsonProperty("imagen")]
         [SwaggerSchema("Imagen del usuario en base64.")]
         public byte[]? Imagen { get; set; }
 
-        [Display(Order = 13)]
+        [Display(Order = 12)]
         [JsonProperty("idRol")]
         [SwaggerSchema("ID Rol del Usuario")]
         public int IdRol { get; set; }
 
-        [Display(Order = 14)]
+        [Display(Order = 13)]
         [JsonProperty("fechaRegistro")]
         [SwaggerSchema("Fecha que indica el registro del usuario")]
         public DateTime FechaRegistro { get; set; }
 
-        [Display(Order = 15)]
+        [Display(Order = 14)]
         [JsonProperty("fechaRegistroCadena")]
         [SwaggerSchema("Fecha que indica el registro del usuario en formato dd/MM/yyyyy")]
         public string FechaRegistroCadena { get => FechaRegistro.ToString("dd/MM/yyyyy"); }

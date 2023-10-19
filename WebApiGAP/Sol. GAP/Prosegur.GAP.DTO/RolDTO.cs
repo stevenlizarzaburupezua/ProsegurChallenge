@@ -37,7 +37,7 @@ namespace Prosegur.GAP.DTO
         public DateTime FechaRegistro { get; set; }
 
         [Display(Order = 5)]
-        [JsonProperty("fechaOperacionCadena")]
+        [JsonProperty("fechaRegistroCadena")]
         [SwaggerSchema("Fecha que indica el registro del rol en formato dd/MM/yyyyy")]
         public string FechaRegistroCadena { get => FechaRegistro.ToString("dd/MM/yyyyy"); }
 
