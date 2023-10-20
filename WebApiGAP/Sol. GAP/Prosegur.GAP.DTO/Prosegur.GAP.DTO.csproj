@@ -13,7 +13,6 @@
 
   <ItemGroup>
     <Folder Include="Login\Request\" />
-    <Folder Include="Login\Response\" />
   </ItemGroup>
 
 </Project>

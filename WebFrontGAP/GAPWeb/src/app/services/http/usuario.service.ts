@@ -12,6 +12,7 @@ export class UsuarioService {
   constructor(private apiService: ApiService) { }
 
   getAllUsersAsync(): Observable<Usuario[]> {
+
     return this.apiService.query(Url.Usuario.GET_USERS, '')
       .pipe(tap(data => data));
   }

@@ -11,6 +11,8 @@ namespace Prosegur.GAP.Domain.Entities
 
         public string NOMBRE { get; set; }
 
+        public byte[] FOTO_PRODUCTO { get; set; }
+
         public string DESCRIPCION { get; set; }
 
         [ForeignKey("Categoria")]

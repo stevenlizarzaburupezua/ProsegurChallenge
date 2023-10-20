@@ -17,59 +17,59 @@ namespace Prosegur.GAP.DTO
         public string LogUsuario { get; set; }
 
         [Display(Order = 2)]
-        [JsonProperty("contrasena")]
-        [SwaggerSchema("Contraseña del usuario.")]
-        public string Contrasena { get; set; }
-
-        [Display(Order = 3)]
         [JsonProperty("primerNombre")]
         [SwaggerSchema("Primer nombre del usuario.")]
         public string PrimerNombre { get; set; }
 
-        [Display(Order = 4)]
+        [Display(Order = 3)]
         [JsonProperty("segundoNombre")]
         [SwaggerSchema("Segundo nombre del usuario.")]
         public string SegundoNombre { get; set; }
 
-        [Display(Order = 5)]
+        [Display(Order = 4)]
         [JsonProperty("primerApellido")]
         [SwaggerSchema("Primer apellido del usuario.")]
         public string PrimerApellido { get; set; }
 
-        [Display(Order = 6)]
+        [Display(Order = 5)]
         [JsonProperty("segundoApellido")]
         [SwaggerSchema("Segundo apellido del usuario.")]
         public string SegundoApellido { get; set; }
 
-        [Display(Order = 7)]
+        [Display(Order = 6)]
         [JsonProperty("email")]
         [SwaggerSchema("Correo electrónico del usuario.")]
         public string Email { get; set; }
 
-        [Display(Order = 8)]
+        [Display(Order = 7)]
         [JsonProperty("direccion")]
         [SwaggerSchema("Dirección del usuario.")]
         public string Direccion { get; set; }
 
-        [Display(Order = 9)]
+        [Display(Order = 8)]
         [JsonProperty("telefono")]
         [SwaggerSchema("Teléfono del usuario.")]
         public string Telefono { get; set; }
 
-        [Display(Order = 10)]
+        [Display(Order = 9)]
         [JsonProperty("flgActivo")]
         [SwaggerSchema("Flag que indica si el usuario se encuentra activo.")]
         public bool FlagActivo { get; set; }
 
-        [Display(Order = 11)]
+        [Display(Order = 10)]
         [JsonProperty("imagen")]
         [SwaggerSchema("Imagen del usuario en base64.")]
         public byte[]? Imagen { get; set; }
 
-        [Display(Order = 12)]
+        [Display(Order = 11)]
         [JsonProperty("idRol")]
         [SwaggerSchema("ID Rol del Usuario")]
         public int IdRol { get; set; }
+
+        [Display(Order = 12)]
+        [JsonProperty("rolDescripcion")]
+        [SwaggerSchema("Descripción del rol del Usuario")]
+        public string RolDescripcion { get; set; }
 
         [Display(Order = 13)]
         [JsonProperty("fechaRegistro")]

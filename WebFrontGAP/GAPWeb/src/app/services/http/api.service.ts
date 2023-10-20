@@ -11,7 +11,7 @@ export class ApiService {
 
   constructor(private httpClient: HttpClient) {
     this.baseUrl = environment.api_url;
-    this.baseUrl = '';
+    // this.baseUrl = '';
   }
 
   private getHeaders(): HttpHeaders {

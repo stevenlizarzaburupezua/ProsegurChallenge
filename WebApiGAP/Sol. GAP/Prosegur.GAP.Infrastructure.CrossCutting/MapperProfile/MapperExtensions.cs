@@ -70,7 +70,6 @@ namespace Prosegur.GAP.Infrastructure.CrossCutting.MapperProfile
                 dst.IdRol = src.ID_ROL;
                 dst.Id = src.ID_USUARIO;
                 dst.LogUsuario = src.LOG_USUARIO;
-                dst.Contrasena = src.CONTRASENA;
                 dst.PrimerNombre = src.PRIMER_NOMBRE;
                 dst.SegundoNombre = src.SEGUNDO_NOMBRE;
                 dst.PrimerApellido = src.PRIMER_APELLIDO;
