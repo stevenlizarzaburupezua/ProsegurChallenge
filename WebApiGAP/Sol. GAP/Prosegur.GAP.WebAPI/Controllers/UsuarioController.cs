@@ -49,7 +49,7 @@ namespace Prosegur.GAP.WebAPI.Controllers
         [SwaggerResponse(500, "Error interno en el servidor")]
         [HttpPost("post-userAsync")]
         public async Task<IActionResult> PostUserAsync([Body] RegistrarUsuarioRequest request)
-        {
+            {
             return Ok(await _usuarioService.PostUserAsync(request));
         }
 
@@ -69,8 +69,8 @@ namespace Prosegur.GAP.WebAPI.Controllers
         OperationId = "DeleteUserAsync")]
         [SwaggerResponse(200, "Eliminación Correcta")]
         [SwaggerResponse(500, "Error interno en el servidor")]
-        [HttpDelete("delete-userAsync")]
-        public async Task<IActionResult> DeleteUserAsync([FromBody] EliminarUsuarioRequest request)
+        [HttpPost("delete-userAsync")]
+        public async Task<IActionResult> DeleteUserAsync([Body] EliminarUsuarioRequest request)
         {
             return Ok(await _usuarioService.DeleteUserAsync(request));
         }

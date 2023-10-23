@@ -6,8 +6,50 @@
 
             <mat-grid-tile>
                 <mat-form-field appearance="outline">
-                    <mat-label>Nombre Completo</mat-label>
-                    <input matInput autocomplete="off" formControlName="nombreCompleto">
+                    <mat-label>Primer Nombre</mat-label>
+                    <input matInput autocomplete="off" formControlName="primerNombre" type="text">
+                    <mat-icon matSuffix>account-box</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Segundo Nombre</mat-label>
+                    <input matInput autocomplete="off" formControlName="segundoNombre" type="text">
+                    <mat-icon matSuffix>account-box</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Primer Apellido</mat-label>
+                    <input matInput autocomplete="off" formControlName="primerApellido" type="text">
+                    <mat-icon matSuffix>account-box</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Segundo Apellido</mat-label>
+                    <input matInput autocomplete="off" formControlName="segundoApellido" type="text">
+                    <mat-icon matSuffix>account-box</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Nombre Usuario</mat-label>
+                    <input matInput autocomplete="off" formControlName="logUsuario" type="text">
+                    <mat-icon matSuffix>account-box</mat-icon>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field appearance="outline">
+                    <mat-label>Contraseña</mat-label>
+                    <input matInput autocomplete="off" formControlName="contrasena" type="password">
                     <mat-icon matSuffix>account-box</mat-icon>
                 </mat-form-field>
             </mat-grid-tile>
@@ -15,46 +57,25 @@
             <mat-grid-tile>
                 <mat-form-field appearance="outline">
                     <mat-label>Correo</mat-label>
-                    <input matInput autocomplete="off" formControlName="correo">
+                    <input matInput autocomplete="off" formControlName="email" type="email">
                     <mat-icon matSuffix>mail</mat-icon>
                 </mat-form-field>
             </mat-grid-tile>
 
             <mat-grid-tile>
                 <mat-form-field appearance="outline">
-                    <mat-label>Rol</mat-label>
-                    <mat-select formControlName="idRol">
-                        <mat-option *ngFor="let item of listaRoles" [value]="item.idRol">
-                            {{item.nombre}}
-                        </mat-option>
-                    </mat-select>
+                    <mat-label>Direccion</mat-label>
+                    <input matInput autocomplete="off" formControlName="direccion" type="text">
                 </mat-form-field>
             </mat-grid-tile>
-
-            <mat-grid-tile>
-
-                <mat-form-field class="full-width" appearance="outline">
-                    <mat-label>Contraseña</mat-label>
-                    <input [type]="hidePassword ? 'password' : 'text'" formControlName="contrasena" matInput
-                        autocomplete="off">
-                    <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" type="button">
-                        <mat-icon matSuffix>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
-                    </button>
-                </mat-form-field>
-            </mat-grid-tile>
-
+      
             <mat-grid-tile>
                 <mat-form-field appearance="outline">
-                    <mat-label>Estado</mat-label>
-                    <mat-select formControlName="esActivo">
-                        <mat-option value="1">Activo</mat-option>
-                        <mat-option value="0">No Activo</mat-option>
-                    </mat-select>
+                    <mat-label>Telefono</mat-label>
+                    <input matInput autocomplete="off" formControlName="telefono" type="tel">
                 </mat-form-field>
             </mat-grid-tile>
-
-
-
+ 
         </mat-grid-list>
     </form>
 </mat-dialog-content>

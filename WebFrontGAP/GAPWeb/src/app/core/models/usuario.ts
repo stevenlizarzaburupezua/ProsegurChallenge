@@ -1,6 +1,7 @@
 export class Usuario {
     id:number;
     idRol:number;
+    rolDescripcion:string;
     logUsuario:string;
     primerNombre:string;
     segundoNombre:string;

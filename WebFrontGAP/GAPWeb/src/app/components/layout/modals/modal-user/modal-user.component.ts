@@ -8,6 +8,7 @@ import { RolService } from 'src/app/services/http/rol.service';
 import { UtilidadService } from 'src/app/modules/reutilizable/utilidad.service';
 import { RegistroUsuarioResponse } from 'src/app/core/models/registro-usuario-response';
 import { FiltroRegistrarUsuario } from 'src/app/core/models/filtro-registrar-usuario';
+import { ConsultaUsuarios } from 'src/app/core/models/consulta-usuarios';
 
 @Component({
   selector: 'app-modal-user',
@@ -23,9 +24,9 @@ export class ModalUserComponent implements OnInit {
   tituloAccion: string = "Agregar";
   botonAccion: string = "Guardar";
   listaRoles: Rol[];
+  listaUsuarios: ConsultaUsuarios[];
   registroUsuarioResponse: RegistroUsuarioResponse;
-  
-  public usuario: Usuario ;
+   
 
   constructor(
     private modalActual: MatDialogRef<ModalUserComponent>,
@@ -56,18 +57,6 @@ export class ModalUserComponent implements OnInit {
       this.botonAccion = "Actualizar";
     }
 
-    this._rolService.getAllRolesAsync().subscribe((roles: Rol[]) => {
-      if (roles.length == 0) {
-
-        this.showLoading = false;
-        return;
-      }
-
-
-      this.showLoading = false;
-    });
-
-
   }
 
   ngOnInit(): void {
@@ -88,6 +77,17 @@ export class ModalUserComponent implements OnInit {
     }
   }
 
+  
+  getUsersAsync(){
+    this._userService.getAllUsersAsync().subscribe((usersResponse: ConsultaUsuarios[]) => {
+      if (usersResponse.length != 0) {
+        this.listaUsuarios = usersResponse
+        return;
+      }
+    });
+
+  }
+
   SaveOrUpdateUser() {
     
     const filtro = this.obtenerFiltroRegistroUSuario();
@@ -96,12 +96,14 @@ export class ModalUserComponent implements OnInit {
       if (registroUsuarioResponse.transactionSuccess == true) {
         console.log("DDDDD")
         this.showLoading = false;
+        this.modalActual.close("true");
+        this.getUsersAsync();
         return;
       }
 
       this.showLoading = false;
     });
-  
+   
   }
 
   obtenerFiltroRegistroUSuario(): FiltroRegistrarUsuario {

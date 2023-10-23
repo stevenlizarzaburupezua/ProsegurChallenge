@@ -24,7 +24,7 @@ namespace Prosegur.GAP.Infrastructure.CrossCutting.MapperProfile
 
             CreateMap<RegistrarUsuarioRequest, Usuario>().AfterMap((src, dst) =>
             {
-                dst.ID_ROL = src.IdRol;
+                dst.ID_ROL = 1; // ROL CUANDO SE REGISTRA LA PRIMERA VEZ USUARIO
                 dst.LOG_USUARIO = src.LogUsuario;
                 dst.CONTRASENA = src.Contrasena;
                 dst.PRIMER_NOMBRE = src.PrimerNombre;
@@ -69,6 +69,7 @@ namespace Prosegur.GAP.Infrastructure.CrossCutting.MapperProfile
             CreateMap<Usuario, UsuarioDTO>().AfterMap((src, dst) =>
             {
                 dst.IdRol = src.ID_ROL;
+                dst.RolDescripcion = src.Rol.DESCRIPCION;
                 dst.Id = src.ID_USUARIO;
                 dst.LogUsuario = src.LOG_USUARIO;
                 dst.PrimerNombre = src.PRIMER_NOMBRE;

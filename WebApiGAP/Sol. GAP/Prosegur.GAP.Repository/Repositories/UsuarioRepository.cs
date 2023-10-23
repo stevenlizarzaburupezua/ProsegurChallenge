@@ -19,25 +19,25 @@ namespace Prosegur.GAP.Repository.Repositories
 
         public async Task<Usuario> SelectLoginAsync(string logUsuario, string contrasena)
         {
-            return await _context.USUARIO
-                .AsNoTracking()
-                .Where(u => u.LOG_USUARIO == logUsuario && u.CONTRASENA == contrasena)
+            return await All<Usuario>()
                 .Include(x => x.Rol)
+                .Where(u => u.LOG_USUARIO == logUsuario && u.CONTRASENA == contrasena)
                 .FirstOrDefaultAsync();
         }
 
         public async Task<Usuario> SelectUserAsync(int idUsuario)
         {
-            return await _context.USUARIO
-                .AsNoTracking()
-                .Where(x => x.ID_USUARIO == idUsuario)
+            return await All<Usuario>()
                 .Include(x => x.Rol)
+                .Where(u => u.ID_USUARIO == idUsuario)
                 .FirstOrDefaultAsync();
         }
 
         public async Task<List<Usuario>> SelectUsersAsync()
         {
-            return await All<Usuario>().ToListAsync();
+            return await All<Usuario>()
+                .Include(x => x.Rol)
+                .ToListAsync();
         }
 
         #endregion

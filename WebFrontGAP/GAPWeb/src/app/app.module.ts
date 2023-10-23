@@ -8,6 +8,7 @@ import { LoginComponent } from './components/login/login.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { RegistroSistemaComponent } from './components/registro-sistema/registro-sistema.component';
 import { SharedModule } from './modules/reutilizable/shared/shared.module';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { SharedModule } from './modules/reutilizable/shared/shared.module';
     BrowserAnimationsModule,
     SharedModule
   ],
-  providers: [],
+  providers: [
+    DatePipe
+  ],
   bootstrap: [AppComponent] 
 })
 export class AppModule { }

@@ -30,11 +30,6 @@ export class ApiService {
     return this.httpClient.get(`${this.baseUrl}${url}`, { params, headers });
   }
 
-  get(url: string, params: HttpParams = new HttpParams()): Observable<any> {
-    const headers = this.getHeaders();
-    return this.httpClient.get(`${this.baseUrl}${url}`, { params, headers });
-  }
-
   post(url: string, data: object = {}, applyDefaultConfig: boolean = false): Observable<any> {
     if (!applyDefaultConfig) {
       const headers = this.getHeaders();
@@ -43,15 +38,6 @@ export class ApiService {
       return this.httpClient.post(`${this.baseUrl}${url}`, data);
     }
   }
-
-  put(url: string, data: object = {}): Observable<any> {
-    const headers = this.getHeaders();
-    return this.httpClient.put(`${this.baseUrl}${url}`, JSON.stringify(data), { headers });
-  }
-
-  delete(url: string): Observable<any> {
-    const headers = this.getHeaders();
-    return this.httpClient.delete(`${this.baseUrl}${url}`, { headers });
-  }
+ 
 
 }

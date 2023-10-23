@@ -22,7 +22,7 @@ namespace Prosegur.GAP.WebAPI.Controllers
         OperationId = "GetRolAsync")]
         [SwaggerResponse(200, "Información del rol")]
         [SwaggerResponse(500, "Error interno en el servidor")]
-        [HttpGet("get-rol")]
+        [HttpGet("get-rolAsync")]
         public async Task<IActionResult> GetRolAsync(int idRol)
         {
             return Ok(await _rolService.GetRolAsync(idRol));
@@ -33,7 +33,7 @@ namespace Prosegur.GAP.WebAPI.Controllers
         OperationId = "GetAllRolesAsync")]
         [SwaggerResponse(200, "Listado de roles")]
         [SwaggerResponse(500, "Error interno en el servidor")]
-        [HttpGet("get-roles")]
+        [HttpGet("get-rolesAsync")]
         public async Task<IActionResult> GetAllRolesAsync()
         {
             return Ok(await _rolService.GetRolesAsync());
@@ -44,7 +44,7 @@ namespace Prosegur.GAP.WebAPI.Controllers
         OperationId = "PostRolAsync")]
         [SwaggerResponse(200, "Registro de un nuevo rol exitoso")]
         [SwaggerResponse(500, "Error interno en el servidor")]
-        [HttpPost("post-rol")]
+        [HttpPost("post-rolAsync")]
         public async Task<IActionResult> PostRolAsync([FromBody] RegistrarRolRequest request)
         {
             return Ok(await _rolService.PostRolAsync(request));
@@ -55,7 +55,7 @@ namespace Prosegur.GAP.WebAPI.Controllers
         OperationId = "UpdateRolAsync")]
         [SwaggerResponse(200, "Modificación de los datos del rol Exitosa")]
         [SwaggerResponse(500, "Error interno en el servidor")]
-        [HttpPut("update-rol")]
+        [HttpPut("update-rolAsync")]
         public async Task<IActionResult> UpdateRolAsync([FromBody] ModificarRolRequest request)
         {
             return Ok(await _rolService.UpdateRolAsync(request));
@@ -66,7 +66,7 @@ namespace Prosegur.GAP.WebAPI.Controllers
         OperationId = "DeleteRolAsync")]
         [SwaggerResponse(200, "Eliminación Correcta")]
         [SwaggerResponse(500, "Error interno en el servidor")]
-        [HttpDelete("delete-rol")]
+        [HttpDelete("delete-rolAsync")]
         public async Task<IActionResult> DeleteRolAsync([FromBody] EliminarRolRequest request)
         {
             return Ok(await _rolService.DeleteRolAsync(request));
