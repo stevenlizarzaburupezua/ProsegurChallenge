@@ -5,7 +5,6 @@
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
-    "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
@@ -22,7 +21,9 @@
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
+    "strict": true, // 👈️ if you have this
+    "strictPropertyInitialization": false // 👈️ add this below
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

@@ -6,6 +6,8 @@ import { Usuario } from 'src/app/core/models/usuario';
 import { UsuarioService } from 'src/app/services/http/usuario.service';
 import { RolService } from 'src/app/services/http/rol.service';
 import { UtilidadService } from 'src/app/modules/reutilizable/utilidad.service';
+import { RegistroUsuarioResponse } from 'src/app/core/models/registro-usuario-response';
+import { FiltroRegistrarUsuario } from 'src/app/core/models/filtro-registrar-usuario';
 
 @Component({
   selector: 'app-modal-user',
@@ -16,11 +18,13 @@ import { UtilidadService } from 'src/app/modules/reutilizable/utilidad.service';
 export class ModalUserComponent implements OnInit {
 
   showLoading: boolean = false;
-  formularioLogin: FormGroup;
+  formularioUsuario: FormGroup;
   hidePassword: boolean = true;
   tituloAccion: string = "Agregar";
   botonAccion: string = "Guardar";
   listaRoles: Rol[];
+  registroUsuarioResponse: RegistroUsuarioResponse;
+  
   public usuario: Usuario ;
 
   constructor(
@@ -33,7 +37,7 @@ export class ModalUserComponent implements OnInit {
 
   ) {
 
-    this.formularioLogin = this.fb.group({
+    this.formularioUsuario = this.fb.group({
       logUsuario: ["", Validators.required],
       contrasena: ["", Validators.required],
       primerNombre: ["", Validators.required],
@@ -68,7 +72,7 @@ export class ModalUserComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.datosUsuario != null) {
-      this.formularioLogin.patchValue({
+      this.formularioUsuario.patchValue({
         logUsuario: this.datosUsuario.logUsuario,
         contrasena: this.datosUsuario.contrasena,
         primerNombre: this.datosUsuario.primerNombre,
@@ -85,20 +89,38 @@ export class ModalUserComponent implements OnInit {
   }
 
   SaveOrUpdateUser() {
-   
-    this.usuario.id == null ? 0 : this.datosUsuario.id;
-    this.usuario.primerNombre = this.formularioLogin.value.primerNombre;
-    this.usuario.segundoNombre = this.formularioLogin.value.segundoNombre;
-    this.usuario.primerApellido = this.formularioLogin.value.primerApellido;
-    this.usuario.segundoApellido = this.formularioLogin.value.segundoApellido;
-    this.usuario.logUsuario = this.formularioLogin.value.logUsuario;
-    this.usuario.contrasena = this.formularioLogin.value.contrasena;
-    this.usuario.direccion = this.formularioLogin.value.direccion;
-    this.usuario.telefono = this.formularioLogin.value.telefono;
-    this.usuario.fechaRegistroCadena= this.formularioLogin.value.fechaRegistroCadena;
-    this.usuario.imagen= this.formularioLogin.value.imagen;
-    this.usuario.email= this.formularioLogin.value.email;
+    
+    const filtro = this.obtenerFiltroRegistroUSuario();
+
+    this._userService.postUserAsync(filtro).subscribe((registroUsuarioResponse: RegistroUsuarioResponse) => {
+      if (registroUsuarioResponse.transactionSuccess == true) {
+        console.log("DDDDD")
+        this.showLoading = false;
+        return;
+      }
+
+      this.showLoading = false;
+    });
   
+  }
+
+  obtenerFiltroRegistroUSuario(): FiltroRegistrarUsuario {
+    const filtro = new FiltroRegistrarUsuario();
+ 
+    filtro.id == null ? 0 : this.datosUsuario.id;
+    filtro.primerNombre = this.formularioUsuario.value.primerNombre;
+    filtro.segundoNombre = this.formularioUsuario.value.segundoNombre;
+    filtro.primerApellido = this.formularioUsuario.value.primerApellido;
+    filtro.segundoApellido = this.formularioUsuario.value.segundoApellido;
+    filtro.logUsuario = this.formularioUsuario.value.logUsuario;
+    filtro.contrasena = this.formularioUsuario.value.contrasena;
+    filtro.direccion = this.formularioUsuario.value.direccion;
+    filtro.telefono = this.formularioUsuario.value.telefono;
+    filtro.fechaRegistroCadena=  this._utilidadService.tryParseDate(this.formularioUsuario.value.fechaRegistroCadena, 'dd/MM/yyyy');
+    filtro.imagen= this.formularioUsuario.value.imagen;
+    filtro.email= this.formularioUsuario.value.email;
+
+    return filtro;
   }
 
 }

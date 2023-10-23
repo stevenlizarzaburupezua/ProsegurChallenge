@@ -4,6 +4,13 @@ import { Observable, throwError } from 'rxjs';
 import { ApiService } from './api.service';
 import { Usuario } from '../../core/models/usuario'
 import * as Url from '../../core/constants/api.constants';
+import { Sesion } from 'src/app/core/models/sesion';
+import { FiltroRegistrarUsuario } from 'src/app/core/models/filtro-registrar-usuario';
+import { RegistroUsuarioResponse } from 'src/app/core/models/registro-usuario-response';
+import { ConsultaUsuario } from 'src/app/core/models/consulta-usuario';
+import { ConsultaUsuarios } from 'src/app/core/models/consulta-usuarios';
+import { FiltroEliminarUsuario } from 'src/app/core/models/filtro-eliminar-usuario';
+import { EliminarUsuarioResponse } from 'src/app/core/models/eliminar-usuario-response';
 
 @Injectable({
   providedIn: 'root'
@@ -11,18 +18,32 @@ import * as Url from '../../core/constants/api.constants';
 export class UsuarioService {
   constructor(private apiService: ApiService) { }
 
-  getAllUsersAsync(): Observable<Usuario[]> {
-
+  getAllUsersAsync(): Observable<ConsultaUsuarios[]> {
     return this.apiService.query(Url.Usuario.GET_USERS, '')
       .pipe(tap(data => data));
   }
 
-  getUsersAsync(idUSuario: number): Observable<Usuario> {
+  getUsersAsync(idUSuario: number): Observable<ConsultaUsuario> {
     return this.apiService.query(Url.Usuario.GET_USER, {idUSuario})
     .pipe(tap(data => data));
   }
 
- 
+  getLoginAsync(logUsuario: string, contrasena:string): Observable<Sesion> {
+      const queryString = { logUsuario, contrasena };
+      return this.apiService.query(Url.Usuario.GET_LOGIN_USER, queryString)
+                            .pipe(tap(data => data));
+  }
+
+  postUserAsync(filtro: FiltroRegistrarUsuario) : Observable<RegistroUsuarioResponse>  {
+    return this.apiService.post(Url.Usuario.POST_USER, filtro)
+                          .pipe(tap(data => data));
+  }
+
+  deleteUserAsync(filtro: FiltroEliminarUsuario) : Observable<EliminarUsuarioResponse>  {
+    return this.apiService.post(Url.Usuario.DELETE_USER, filtro)
+                          .pipe(tap(data => data));
+  }
+
 
   // consultarActaTransferencia(filtro: FiltroTransferencia): Observable<ConsultaActaTransferencia[]> {
   //     return this.apiService.query(Url.ActaTransferencia.CONSULTA_TRANSFERENCIA, filtro)

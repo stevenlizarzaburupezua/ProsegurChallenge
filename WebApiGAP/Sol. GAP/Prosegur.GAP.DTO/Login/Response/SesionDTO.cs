@@ -27,9 +27,9 @@ namespace Prosegur.GAP.DTO.Login.Response
         public string LogUsuario { get; set; }
 
         [Display(Order = 3)]
-        [JsonProperty("rolDescripcion")]
-        [SwaggerSchema("Descripción del rol del Usuario")]
-        public string RolDescripcion { get; set; }
+        [JsonProperty("rol")]
+        [SwaggerSchema("Rol del Usuario")]
+        public string Rol { get; set; }
 
     }
 }

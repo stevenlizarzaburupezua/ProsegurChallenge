@@ -11,6 +11,7 @@ namespace Prosegur.GAP.DTO.Mantenimiento.Request
 {
     public class EliminarUsuarioRequest
     {
+        [Display(Order = 0)]
         [JsonProperty("id")]
         [SwaggerSchema("Identificador del usuario.")]
         public int Id { get; set; }

@@ -1,20 +1,19 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Swashbuckle.AspNetCore.Annotations;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using Swashbuckle.AspNetCore.Annotations;
 
 namespace Prosegur.GAP.DTO
 {
-    public class ProductoDTO
+    public class ReporteDTO
     {
         [Display(Order = 0)]
-        [JsonProperty("id")]
-        [SwaggerSchema("Id del producto")]
+        [JsonProperty("numeroDocumento")]
+        [SwaggerSchema("Numero de Documento del")]
         public int Id { get; set; }
 
         [Display(Order = 1)]
@@ -51,6 +50,5 @@ namespace Prosegur.GAP.DTO
         [JsonProperty("fechaRegistro")]
         [SwaggerSchema("Fecha de registro del producto")]
         public string FechaRegistro { get; set; }
-
     }
 }

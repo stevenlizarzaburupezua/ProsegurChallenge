@@ -1,2 +1,4 @@
-export interface FiltroEliminarUsuario {
+export interface FiltroEliminarUsuario {    
+    id:string;
+    logUsuario:string;
 }

@@ -1,4 +1,5 @@
 ﻿using Prosegur.GAP.DTO;
+using Prosegur.GAP.DTO.Login.Response;
 using Prosegur.GAP.DTO.Mantenimiento.Request;
 using Prosegur.GAP.DTO.Mantenimiento.Response;
 using System;
@@ -15,11 +16,13 @@ namespace Prosegur.GAP.Application.Interface
 
         Task<UsuarioDTO> GetUserAsync(int idUsuario);
 
-        Task<TransactionResponse> PostUserAsync(RegistrarUsuarioRequest request);
+        Task<RegistrarUsuarioDTO> PostUserAsync(RegistrarUsuarioRequest request);
 
-        Task<TransactionResponse> UpdateUserAsync(ModificarUsuarioRequest request);
+        Task<ModificarUsuarioDTO> UpdateUserAsync(ModificarUsuarioRequest request);
 
-        Task<TransactionResponse> DeleteUserAsync(EliminarUsuarioRequest request);
+        Task<EliminarUsuarioDTO> DeleteUserAsync(EliminarUsuarioRequest request);
+
+        Task<SesionDTO> GetLoginAsync(string logUsuario, string contrasena);
 
 
     }

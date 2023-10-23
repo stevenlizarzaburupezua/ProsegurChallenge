@@ -41,7 +41,6 @@ namespace Prosegur.GAP.Domain.Entities
 
         public DateTime FEC_REGISTRO { get; set; }
 
-
         public virtual Rol Rol { get; set; }
     }
 }

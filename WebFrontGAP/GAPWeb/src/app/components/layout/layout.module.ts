@@ -7,7 +7,8 @@ import { ProductoComponent } from './pages/producto/producto.component';
 import { PedidoComponent } from './pages/pedido/pedido.component';
 import { HistorialPedidoComponent } from './pages/historial-pedido/historial-pedido.component';
 import { ReporteComponent } from './pages/reporte/reporte.component';
-import { SharedModule } from '../../modules/reutilizable/shared/shared.module'
+import { SharedModule } from '../../modules/reutilizable/shared/shared.module';
+import { ModalUserComponent } from './modals/modal-user/modal-user.component'
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SharedModule } from '../../modules/reutilizable/shared/shared.module'
     ProductoComponent,
     PedidoComponent,
     HistorialPedidoComponent,
-    ReporteComponent
+    ReporteComponent,
+    ModalUserComponent
   ],
   imports: [
     CommonModule,

@@ -2,6 +2,7 @@
 using Prosegur.GAP.Domain.Entities;
 //using Prosegur.GAP.Domain.VO.Login;
 using Prosegur.GAP.DTO;
+using Prosegur.GAP.DTO.Login.Response;
 using Prosegur.GAP.DTO.Mantenimiento.Request;
 using Prosegur.GAP.DTO.Mantenimiento.Response;
 using System;
@@ -80,6 +81,45 @@ namespace Prosegur.GAP.Infrastructure.CrossCutting.MapperProfile
                 dst.FlagActivo = src.FLAG_ACTIVO;
                 dst.Imagen = src.IMG_USUARIO;
                 dst.FechaRegistro = src.FEC_REGISTRO;
+            });
+
+            CreateMap<Usuario, RegistrarUsuarioDTO>().AfterMap((src, dst) =>
+            {
+                dst.TransactionSuccess = true;
+                dst.LogUsuario = src.LOG_USUARIO;
+                dst.IdUsuario = src.ID_USUARIO;
+            });
+
+            CreateMap<Usuario, ModificarUsuarioDTO>().AfterMap((src, dst) =>
+            {
+                dst.TransactionSuccess = true;
+                dst.IdRol = src.ID_ROL;
+                dst.Id = src.ID_USUARIO;
+                dst.LogUsuario = src.LOG_USUARIO;
+                dst.PrimerNombre = src.PRIMER_NOMBRE;
+                dst.SegundoNombre = src.SEGUNDO_NOMBRE;
+                dst.PrimerApellido = src.PRIMER_APELLIDO;
+                dst.SegundoApellido = src.SEGUNDO_APELLIDO;
+                dst.Email = src.EMAIL;
+                dst.Direccion = src.DIRECCION;
+                dst.Telefono = src.TELEFONO;
+                dst.FlagActivo = src.FLAG_ACTIVO;
+                dst.Imagen = src.IMG_USUARIO;
+            });
+
+            CreateMap<Usuario, EliminarUsuarioDTO>().AfterMap((src, dst) =>
+            {
+                dst.TransactionSuccess = true;
+                dst.Id = src.ID_USUARIO;
+                dst.LogUsuario = src.LOG_USUARIO;
+            });
+
+            CreateMap<Usuario, SesionDTO>().AfterMap((src, dst) =>
+            {
+                dst.IdUsuario = src.ID_USUARIO;
+                dst.NombreCompleto = $"{src.PRIMER_NOMBRE} {src.SEGUNDO_NOMBRE} {src.PRIMER_APELLIDO} {src.SEGUNDO_APELLIDO}";
+                dst.LogUsuario = src.LOG_USUARIO;
+                dst.Rol = src.Rol.ROL;
             });
 
             #endregion

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Prosegur.GAP.Application.Interface;
 using Prosegur.GAP.DTO;
 using Prosegur.GAP.DTO.Mantenimiento.Request;
+using Refit;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace Prosegur.GAP.WebAPI.Controllers
@@ -24,7 +25,7 @@ namespace Prosegur.GAP.WebAPI.Controllers
         OperationId = "GetUserAsync")]
         [SwaggerResponse(200, "Información del usuario")]
         [SwaggerResponse(500, "Error interno en el servidor")]
-        [HttpGet("get-user")]
+        [HttpGet("get-userAsync")]
         public async Task<IActionResult> GetUserAsync(int idUsuario)
         {
             return Ok(await _usuarioService.GetUserAsync(idUsuario));
@@ -35,7 +36,7 @@ namespace Prosegur.GAP.WebAPI.Controllers
         OperationId = "GetAllUsersAsync")]
         [SwaggerResponse(200, "Listado de usuarios")]
         [SwaggerResponse(500, "Error interno en el servidor")]
-        [HttpGet("get-users")]
+        [HttpGet("get-usersAsync")]
         public async Task<IActionResult> GetAllUsersAsync()
         {
             return Ok(await _usuarioService.GetUsersAsync());
@@ -46,8 +47,8 @@ namespace Prosegur.GAP.WebAPI.Controllers
         OperationId = "PostUserAsync")]
         [SwaggerResponse(200, "Registro de un nuevo usuario exitoso")]
         [SwaggerResponse(500, "Error interno en el servidor")]
-        [HttpPost("post-user")]
-        public async Task<IActionResult> PostUserAsync([FromBody] RegistrarUsuarioRequest request)
+        [HttpPost("post-userAsync")]
+        public async Task<IActionResult> PostUserAsync([Body] RegistrarUsuarioRequest request)
         {
             return Ok(await _usuarioService.PostUserAsync(request));
         }
@@ -57,7 +58,7 @@ namespace Prosegur.GAP.WebAPI.Controllers
         OperationId = "UpdateUserAsync")]
         [SwaggerResponse(200, "Modificación de los datos del usuario exitosa")]
         [SwaggerResponse(500, "Error interno en el servidor")]
-        [HttpPut("update-user")]
+        [HttpPut("update-userAsync")]
         public async Task<IActionResult> UpdateUserAsync([FromBody] ModificarUsuarioRequest request)
         {
             return Ok(await _usuarioService.UpdateUserAsync(request));
@@ -68,10 +69,21 @@ namespace Prosegur.GAP.WebAPI.Controllers
         OperationId = "DeleteUserAsync")]
         [SwaggerResponse(200, "Eliminación Correcta")]
         [SwaggerResponse(500, "Error interno en el servidor")]
-        [HttpDelete("delete-user")]
+        [HttpDelete("delete-userAsync")]
         public async Task<IActionResult> DeleteUserAsync([FromBody] EliminarUsuarioRequest request)
         {
             return Ok(await _usuarioService.DeleteUserAsync(request));
+        }
+
+        [SwaggerOperation(
+        Summary = "Servicio valida que el usuario exista en el sistema",
+        OperationId = "LogInAsync")]
+        [SwaggerResponse(200, "Validación Correcta")]
+        [SwaggerResponse(500, "Error interno en el servidor")]
+        [HttpGet("get-loginAsync")]
+        public async Task<IActionResult> GetLoginAsync(string logUsuario, string contrasena)
+        {
+            return Ok(await _usuarioService.GetLoginAsync(logUsuario, contrasena));
         }
 
     }

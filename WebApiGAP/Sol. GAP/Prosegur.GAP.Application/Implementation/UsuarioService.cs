@@ -3,11 +3,9 @@ using Prosegur.GAP.Domain.Entities;
 using Prosegur.GAP.Domain.Interface.Repository;
 using Prosegur.GAP.Domain.Seedwork;
 using Prosegur.GAP.DTO;
+using Prosegur.GAP.DTO.Login.Response;
 using Prosegur.GAP.DTO.Mantenimiento.Request;
 using Prosegur.GAP.DTO.Mantenimiento.Response;
-using Prosegur.GAP.Infrastructure.CrossCutting.MapperProfile;
-using Prosegur.GAP.Repository.Repositories;
-using Prosegur.GAP.Repository.UnitofWork;
 using Rep.Traserep.Infra.CrossCutting.Adapter;
 
 
@@ -27,36 +25,32 @@ namespace Prosegur.GAP.Application.Implementation
 
         public async Task<UsuarioDTO> GetUserAsync(int idUsuario)
         {
-            return (await _usuarioRepository.GetUserAsync(idUsuario)).ProjectedAs<UsuarioDTO>();
+            return (await _usuarioRepository.SelectUserAsync(idUsuario)).ProjectedAs<UsuarioDTO>();
         }
 
         public async Task<IList<UsuarioDTO>> GetUsersAsync()
         {
-            return (await _usuarioRepository.GetUsersAsync()).ProjectedAs<List<UsuarioDTO>>();
+            return (await _usuarioRepository.SelectUsersAsync()).ProjectedAs<List<UsuarioDTO>>();
         }
 
-        public async Task<TransactionResponse> PostUserAsync(RegistrarUsuarioRequest request)
+        public async Task<SesionDTO> GetLoginAsync(string logUsuario, string contrasena)
         {
-            await _usuarioRepository.InsertUserAsync(request.ProjectedAs<Usuario>());
-            await _unitOfWork.SaveAsync();
-
-            return new TransactionResponse { Success = true };
+            return (await _usuarioRepository.SelectLoginAsync(logUsuario, contrasena)).ProjectedAs<SesionDTO>();
         }
 
-        public async Task<TransactionResponse> UpdateUserAsync(ModificarUsuarioRequest request)
+        public async Task<RegistrarUsuarioDTO> PostUserAsync(RegistrarUsuarioRequest request)
         {
-            await _usuarioRepository.UpdateUserAsync(request.ProjectedAs<Usuario>());
-            await _unitOfWork.SaveAsync();
-
-            return new TransactionResponse { Success = true };
+            return (await _usuarioRepository.InsertUserAsync(request.ProjectedAs<Usuario>())).ProjectedAs<RegistrarUsuarioDTO>();
         }
 
-        public async Task<TransactionResponse> DeleteUserAsync(EliminarUsuarioRequest request)
+        public async Task<ModificarUsuarioDTO> UpdateUserAsync(ModificarUsuarioRequest request)
         {
-            await _usuarioRepository.DeleteUserAsync(request.ProjectedAs<Usuario>());
-            await _unitOfWork.SaveAsync();
+            return (await _usuarioRepository.UpdateUserAsync(request.ProjectedAs<Usuario>())).ProjectedAs<ModificarUsuarioDTO>();
+        }
 
-            return new TransactionResponse { Success = true };
+        public async Task<EliminarUsuarioDTO> DeleteUserAsync(EliminarUsuarioRequest request)
+        {
+            return (await _usuarioRepository.DeleteUserAsync(request.ProjectedAs<Usuario>())).ProjectedAs<EliminarUsuarioDTO>();
         }
 
     }

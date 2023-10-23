@@ -11,6 +11,10 @@ namespace Prosegur.GAP.DTO.Mantenimiento.Request
 {
     public class RegistrarUsuarioRequest
     {
+        [JsonProperty("idUsuario")]
+        [SwaggerSchema("id del usuario")]
+        public int IdUsuario { get; set; }
+
         [JsonProperty("idRol")]
         [SwaggerSchema("Rol del usuario")]
         public int IdRol { get; set; }

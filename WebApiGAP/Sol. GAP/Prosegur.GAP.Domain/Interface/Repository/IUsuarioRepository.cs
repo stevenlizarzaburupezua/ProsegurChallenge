@@ -9,14 +9,17 @@ namespace Prosegur.GAP.Domain.Interface.Repository
 {
     public interface IUsuarioRepository
     {
-        Task<Usuario> GetUserAsync(int idUsuario);
+        Task<Usuario> SelectUserAsync(int idUsuario);
 
-        Task<List<Usuario>> GetUsersAsync();
+        Task<List<Usuario>> SelectUsersAsync();
 
-        Task InsertUserAsync(Usuario usuario);
+        Task<Usuario> SelectLoginAsync(string logUsuario, string contrasena);
 
-        Task UpdateUserAsync(Usuario usuario);
+        Task<Usuario> InsertUserAsync(Usuario usuario);
 
-        Task DeleteUserAsync(Usuario usuario);
+        Task<Usuario> UpdateUserAsync(Usuario usuario);
+
+        Task<Usuario> DeleteUserAsync(Usuario usuario);
+
     }
 }
